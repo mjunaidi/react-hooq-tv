@@ -127,8 +127,8 @@ export default function View(props) {
   }
 
   return (
-    <div className="container">
-      <CircularProgress />
+    <div className="container text-center">
+      <CircularProgress className="m-5" />
     </div>
   )
 }

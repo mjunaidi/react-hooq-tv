@@ -1,8 +1,9 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
-import {Button,Card,CardActions,CardContent,CardMedia,Grid,Typography,Container} from '@material-ui/core'
+import {Button,Card,CardActions,CardContent,CardMedia,Grid,Typography,Container,Select,MenuItem} from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import DataService from '../component/DataService'
+import Constant from '../Constant'
 
 const useStyles = makeStyles(theme => ({
   cardGrid: {
@@ -25,11 +26,12 @@ const useStyles = makeStyles(theme => ({
 const TYPE = 'Multi-Title-Spotlight'
 const POSTER = 'POSTER'
 
-export default function Home(props) {
+export default function Discover(props) {
   const classes = useStyles()
 
   const [data,setData] = React.useState()
   const [init,setInit] = React.useState(false)
+  const [region,setRegion] = React.useState(localStorage.getItem('region')||'ID')
 
   React.useEffect(()=>{
     if (!init) {
@@ -37,7 +39,7 @@ export default function Home(props) {
 
       }
 
-      DataService.discover({region:'ID'},res=>{
+      DataService.discover({region},res=>{
         if (res.ok) {
           res.json().then(data=>{
             if (typeof(data)==='object'&&data!==null) {
@@ -48,7 +50,27 @@ export default function Home(props) {
         setInit(true)
       }, handleErr)
     }
-  }, [init])
+  }, [init,region])
+
+  React.useEffect(()=>{
+    localStorage.setItem('region',region)
+    setInit(false)
+  }, [region])
+
+  const renderRegionSelect = ()=>{
+    return (
+      <Select value={region} onChange={e=>setRegion(e.target.value)}>
+        {
+          Constant.regions.map((e,i)=>{
+            const {value,label} = e
+            return (
+              <MenuItem key={i} value={value}>{label}</MenuItem>
+            )
+          })
+        }
+      </Select>
+    )
+  }
 
   const renderData = ()=>{
     if (typeof(data)==='object'&&data!==null&&typeof(data.data)==='object'&&data.data!==null) {
@@ -56,6 +78,8 @@ export default function Home(props) {
       if (Array.isArray(list)&&list.length>0) {
         return (
           <Container className={classes.cardGrid} maxWidth="md">
+
+            <div className="float-right">{renderRegionSelect()}</div>
 
             <h1 className="mb-3">Discover</h1>
 
