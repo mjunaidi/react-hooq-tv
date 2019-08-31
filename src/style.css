@@ -23,6 +23,13 @@ main {
   min-height: 512px;
 }
 
+.text-condensed {
+  font-family: "Futura-CondensedMedium",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif!important;
+}
+.text-title {
+  font-family: "Futura",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif!important;
+}
+
 header,footer {
   background: linear-gradient(to right, fuchsia, tomato);
 }

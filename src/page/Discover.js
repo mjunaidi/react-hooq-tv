@@ -83,7 +83,7 @@ export default function Discover(props) {
 
           <Grid container spacing={2} className="animated slideInDown">
             <Grid item xs={6}>
-              <Typography gutterBottom variant="h3" component="h2" className="white-space-nowrap">Discover<MovieFilter className="ml-2" style={{fontSize:'larger'}} /></Typography>
+              <Typography gutterBottom variant="h3" component="h2" className="text-condensed white-space-nowrap">Discover<MovieFilter className="ml-2" style={{fontSize:'larger'}} /></Typography>
             </Grid>
             <Grid item xs={6}>
               <div className="float-right">{renderRegionSelect()}</div>
@@ -123,7 +123,7 @@ export default function Discover(props) {
                         <Card className={classes.card}>
                           {renderMedia(images)}
                           <CardContent className={classes.cardContent}>
-                            <Typography gutterBottom variant="h5" component="h2">{title}</Typography>
+                            <Typography gutterBottom variant="h5" component="h2" className="text-title">{title}</Typography>
                             <Meta {...meta} className="mb-2" />
                             {running_time_friendly&&<Chip avatar={<AvTimer />} className="mr-2 shadow animated bounceInUp" label={running_time_friendly} variant="outlined" />}
                           </CardContent>

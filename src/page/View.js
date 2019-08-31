@@ -92,7 +92,7 @@ export default function View(props) {
 
           <div className="mb-3"><Meta {...meta} className="mb-2" /></div>
 
-          <h1 className="mb-3 animated lightSpeedIn">{title}</h1>
+          <h1 className="mb-3 animated lightSpeedIn text-title">{title}</h1>
 
           <div className="mb-3">
             <Chip avatar={<Movie className="m-1" />} variant="outlined"  label={as} className="mr-2 shadow animated bounceInUp" />
@@ -118,7 +118,7 @@ export default function View(props) {
             }
           </div>}
 
-          <p className="mb-3 animated fadeIn">{description}</p>
+          <p className="lead mb-3 animated fadeIn">{description}</p>
 
           {renderSpotlight(images)}
 
