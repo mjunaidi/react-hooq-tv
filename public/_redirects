@@ -1,0 +1,12 @@
+/bootstrap/*  /bootstrap/:splat
+/css/*  /css/:splat
+/js/*  /js/:splat
+/data/*  /data/:splat
+/img/*  /img/:splat
+/md/*  /md/:splat
+/static/*  /static/:splat
+/service-worker.js /service-worker.js 200
+/manifest.json /manifest.json 200
+/asset-manifest.json /asset-manifest.json 200
+/favicon.ico /favicon.ico 200
+/*  /index.html 200!
