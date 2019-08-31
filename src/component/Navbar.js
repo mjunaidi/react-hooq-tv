@@ -17,7 +17,7 @@ export default function Navbar(props) {
     <AppBar position="relative" color="secondary">
       <Toolbar>
         <Typography variant="h6" color="inherit" noWrap className={classes.icon}>
-          <img src={Constant.logo} alt={Constant.name} />
+          <img src={Constant.logo} alt={Constant.name} style={{filter: 'brightness(0) invert(1)'}} />
         </Typography>
         <LiveTv />
       </Toolbar>
