@@ -19,7 +19,7 @@ function Copyright() {
       </Link>{' '}
       {new Date().getFullYear()}
       {'. Built with '}
-      <Link color="inherit" href="https://material-ui.com/">
+      <Link color="inherit" href="https://material-ui.com/" target="_blank" rel="noopener noreferrer">
         Material-UI
       </Link>
     </Typography>
