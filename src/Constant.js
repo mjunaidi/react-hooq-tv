@@ -8,6 +8,7 @@ const Constant = {
     {value: 'PH', label: 'Phillippines', flag: '\u{1f1f5}\u{1f1ed}'},
     {value: 'SG', label: 'Singapore', flag: '\u{1f1f8}\u{1f1ec}'},
     {value: 'TH', label: 'Thailand', flag: '\u{1f1f9}\u{1f1ed}'},
+    {value: 'MY', label: 'Malaysia', flag: '\u{1f1f2}\u{1f1fe}'},
   ],
 }
 export default Constant

@@ -75,75 +75,84 @@ export default function Discover(props) {
     )
   }
 
-  if (typeof(data)==='object'&&data!==null&&typeof(data.data)==='object'&&data.data!==null) {
-    const list = data.data
-    if (Array.isArray(list)&&list.length>0) {
-      return (
-        <Container className={classes.cardGrid} maxWidth="md">
+  if (typeof(data)==='object'&&data!==null) {
+    if (typeof(data.data)==='object'&&data.data!==null) {
+      const list = data.data
+      if (Array.isArray(list)&&list.length>0) {
+        return (
+          <Container className={classes.cardGrid} maxWidth="md">
 
-          <Grid container spacing={2} className="animated slideInDown">
-            <Grid item xs={6}>
-              <Typography gutterBottom variant="h3" component="h2" className="text-condensed white-space-nowrap">Discover<MovieFilter className="ml-2" style={{fontSize:'larger'}} /></Typography>
+            <Grid container spacing={2} className="animated slideInDown">
+              <Grid item xs={6}>
+                <Typography gutterBottom variant="h3" component="h2" className="text-condensed white-space-nowrap">Discover<MovieFilter className="ml-2" style={{fontSize:'larger'}} /></Typography>
+              </Grid>
+              <Grid item xs={6}>
+                <div className="float-right">{renderRegionSelect()}</div>
+              </Grid>
             </Grid>
-            <Grid item xs={6}>
-              <div className="float-right">{renderRegionSelect()}</div>
-            </Grid>
-          </Grid>
 
-          <Grid container spacing={4}>
-            {list.filter(e=>e.type===TYPE).map((e,i)=>{
-              if (typeof(e)==='object'&&e!==null) {
-                const {data} = e
-                if (Array.isArray(data)&&data.length>0) {
-                  return data.map((e,i)=>{
-                    const {id,title,images,meta={},running_time_friendly} = e
+            <Grid container spacing={4}>
+              {list.filter(e=>e.type===TYPE).map((e,i)=>{
+                if (typeof(e)==='object'&&e!==null) {
+                  const {data} = e
+                  if (Array.isArray(data)&&data.length>0) {
+                    return data.map((e,i)=>{
+                      const {id,title,images,meta={},running_time_friendly} = e
 
-                    const renderMedia = images=>{
-                      if (Array.isArray(images)&&images.length>0) {
-                        const poster = images.filter(e=>e.type===POSTER)[0]
-                        if (typeof(poster)==='object'&&poster!==null) {
-                          const {url} = poster
-                          if (typeof(url)==='string'&&url.length>0) {
-                            return (
-                              <Link to={`/view/${id}`}>
-                                <CardMedia
-                                  className={classes.cardMedia}
-                                  image={url}
-                                  title={title}
-                                />
-                              </Link>
-                            )
+                      const renderMedia = images=>{
+                        if (Array.isArray(images)&&images.length>0) {
+                          const poster = images.filter(e=>e.type===POSTER)[0]
+                          if (typeof(poster)==='object'&&poster!==null) {
+                            const {url} = poster
+                            if (typeof(url)==='string'&&url.length>0) {
+                              return (
+                                <Link to={`/view/${id}`}>
+                                  <CardMedia
+                                    className={classes.cardMedia}
+                                    image={url}
+                                    title={title}
+                                  />
+                                </Link>
+                              )
+                            }
                           }
                         }
                       }
-                    }
 
-                    return (
-                      <Grid item key={i} xs={12} sm={6} md={4} className={`animated flipInY`}>
-                        <Card className={classes.card}>
-                          {renderMedia(images)}
-                          <CardContent className={classes.cardContent}>
-                            <Typography gutterBottom variant="h5" component="h2" className="text-title">{title}</Typography>
-                            <Meta {...meta} className="mb-2" />
-                            {running_time_friendly&&<Chip avatar={<AvTimer />} className="mr-2 mb-2 shadow animated bounceInUp" label={running_time_friendly} variant="outlined" />}
-                          </CardContent>
-                          <CardActions>
-                            <Link to={`/view/${id}`}>
-                              <Button size="small" color="primary">View</Button>
-                            </Link>
-                          </CardActions>
-                        </Card>
-                      </Grid>
-                    )
-                  })
+                      return (
+                        <Grid item key={i} xs={12} sm={6} md={4} className={`animated flipInY`}>
+                          <Card className={classes.card}>
+                            {renderMedia(images)}
+                            <CardContent className={classes.cardContent}>
+                              <Typography gutterBottom variant="h5" component="h2" className="text-title">{title}</Typography>
+                              <Meta {...meta} className="mb-2" />
+                              {running_time_friendly&&<Chip avatar={<AvTimer />} className="mr-2 mb-2 shadow animated bounceInUp" label={running_time_friendly} variant="outlined" />}
+                            </CardContent>
+                            <CardActions>
+                              <Link to={`/view/${id}`}>
+                                <Button size="small" color="primary">View</Button>
+                              </Link>
+                            </CardActions>
+                          </Card>
+                        </Grid>
+                      )
+                    })
+                  }
                 }
-              }
-              return null
-            })}
-          </Grid>
-        </Container>
-      )
+                return null
+              })}
+            </Grid>
+          </Container>
+        )
+      }
     }
+    return (
+      <div className="container text-center p-5">
+        <h3 className="mb-3 text-title">Sorry, we’re currently not available in this region {'\u{1f61e}'}</h3>
+        <p className="lead">Please choose another region</p>
+        <div className="">{renderRegionSelect()}</div>
+      </div>
+    )
   }
   return (
     <div className="container text-center p-5">
