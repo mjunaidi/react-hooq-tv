@@ -62,9 +62,9 @@ export default function Discover(props) {
       <Select value={region} onChange={e=>setRegion(e.target.value)}>
         {
           Constant.regions.map((e,i)=>{
-            const {value,label} = e
+            const {value,label,flag} = e
             return (
-              <MenuItem key={i} value={value}>{label}</MenuItem>
+              <MenuItem key={i} value={value}><span className="mr-2">{flag}</span>{label}</MenuItem>
             )
           })
         }

@@ -91,7 +91,7 @@ export default function View(props) {
 
           <div className="mb-3">
             <Chip avatar={<Movie className="m-1" />} variant="outlined"  label={as} className="mr-2 shadow" />
-            <Chip avatar={<AvTimer />} className="mr-2 shadow" label={running_time_friendly} variant="outlined" />
+            {running_time_friendly&&<Chip avatar={<AvTimer />} className="mr-2 shadow" label={running_time_friendly} variant="outlined" />}
           </div>
 
           <div className="mb-3">
@@ -104,14 +104,14 @@ export default function View(props) {
             })}
           </div>
 
-          <div className="mb-3">
+          {Array.isArray(languages)&&languages>0&&<div className="mb-3">
             <Language className="mr-2" />
             {
               languages.map((e,i)=>(
                 <Chip key={i} label={e} variant="outlined" color="primary" className="mr-2 shadow" />
               ))
             }
-          </div>
+          </div>}
 
           <p className="mb-3">{description}</p>
 
