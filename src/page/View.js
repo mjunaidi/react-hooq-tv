@@ -1,6 +1,6 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
-import {CircularProgress,Chip} from '@material-ui/core'
+import {CircularProgress,Chip,Button} from '@material-ui/core'
 import {ArrowBack,Movie,AvTimer,CloudDownload,ViewStream,Category,Language} from '@material-ui/icons'
 import DataService from '../component/DataService'
 import Meta from '../component/Meta'
@@ -81,8 +81,10 @@ export default function View(props) {
       return (
         <div className="container mb-5">
           <div className="mb-3 mt-3 animated slideInDown">
-            <Link to="/" className="text-dark">
-              <Chip label={<><ArrowBack className="mr-2" />Back</>} variant="outlined" />
+            <Link to="/">
+              <Button variant="outlined" size="small" aria-label="back" className="shadow" style={{borderRadius:'1.5rem'}}>
+                <ArrowBack className="mr-2" />Back
+              </Button>
             </Link>
           </div>
 
