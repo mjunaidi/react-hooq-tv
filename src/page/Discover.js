@@ -125,7 +125,7 @@ export default function Discover(props) {
                           <CardContent className={classes.cardContent}>
                             <Typography gutterBottom variant="h5" component="h2" className="text-title">{title}</Typography>
                             <Meta {...meta} className="mb-2" />
-                            {running_time_friendly&&<Chip avatar={<AvTimer />} className="mr-2 shadow animated bounceInUp" label={running_time_friendly} variant="outlined" />}
+                            {running_time_friendly&&<Chip avatar={<AvTimer />} className="mr-2 mb-2 shadow animated bounceInUp" label={running_time_friendly} variant="outlined" />}
                           </CardContent>
                           <CardActions>
                             <Link to={`/view/${id}`}>
