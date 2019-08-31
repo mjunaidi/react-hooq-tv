@@ -65,7 +65,7 @@ export default function View(props) {
           if (typeof(e)==='object'&&e!==null) {
             const {url} = e
             return (
-              <div className="mb-3 rounded shadow animated slideInUp delay-2s">
+              <div className="mb-3 rounded shadow animated flipInY delay-2s">
                 <img src={url} alt={title} className="w-100" />
               </div>
             )
@@ -75,9 +75,9 @@ export default function View(props) {
       }
 
       return (
-        <div className="container">
+        <div className="container mb-5">
           <div className="mb-3 mt-3 animated slideInDown">
-            <Link to="/"><ArrowBack className="mr-2" />Back</Link>
+            <Link to="/" className="text-dark"><ArrowBack className="mr-2" />Back</Link>
           </div>
 
           {renderBackground(images)}
@@ -91,7 +91,7 @@ export default function View(props) {
             {running_time_friendly&&<Chip avatar={<AvTimer />} className="mr-2 shadow animated bounceInUp" label={running_time_friendly} variant="outlined" />}
           </div>
 
-          <div className="mb-3 animated fadeInUp slower">
+          <div className="mb-3 animated fadeIn slower">
             <Category className="mr-2" />
             {tags.map((e,i)=>{
               const {label} = e

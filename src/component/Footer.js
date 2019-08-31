@@ -12,7 +12,7 @@ const useStyles = makeStyles(theme => ({
 
 function Copyright() {
   return (
-    <Typography variant="body2" color="textSecondary" align="center">
+    <Typography variant="body2" color="textSecondary" align="center" className="text-white">
       {'Copyright © '}
       <Link color="inherit" href="https://material-ui.com/">
         {Constant.name}
@@ -30,7 +30,7 @@ export default function Footer(props) {
   const classes = useStyles()
   return (
     <footer className={`${classes.footer} animated fadeIn slowest`}>
-      <p className="text-center text-sm text-muted">{Constant.disclaimer}</p>
+      <p className="text-center text-sm text-white">NOTE: {Constant.disclaimer}</p>
       <Copyright />
     </footer>
   )

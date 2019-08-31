@@ -1,8 +1,8 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
-import {Button,Chip,Card,CardActions,CardContent,CardMedia,Grid,Typography,Container,Select,MenuItem} from '@material-ui/core'
+import {Button,Chip,Card,CardActions,CardContent,CardMedia,Grid,Typography,Container,Select,MenuItem,CircularProgress} from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
-import {AvTimer} from '@material-ui/icons'
+import {MovieFilter,AvTimer} from '@material-ui/icons'
 import DataService from '../component/DataService'
 import Meta from '../component/Meta'
 import Constant from '../Constant'
@@ -84,7 +84,7 @@ export default function Discover(props) {
 
             <Grid container spacing={2} className="animated slideInDown">
               <Grid item xs={6}>
-                <h1 className="mb-3">Discover</h1>
+                <h1 className="mb-3">Discover<MovieFilter className="ml-2" style={{fontSize:'larger'}} /></h1>
               </Grid>
               <Grid item xs={6}>
                 <div className="float-right">{renderRegionSelect()}</div>
@@ -146,6 +146,11 @@ export default function Discover(props) {
         )
       }
     }
+    return (
+      <div className="container text-center">
+        <CircularProgress className="m-5" />
+      </div>
+    )
   }
 
   return (
