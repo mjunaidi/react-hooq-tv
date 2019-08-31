@@ -55,6 +55,7 @@ export default function Discover(props) {
   React.useEffect(()=>{
     localStorage.setItem('region',region)
     setInit(false)
+    setData(null)
   }, [region])
 
   const renderRegionSelect = ()=>{
@@ -79,9 +80,14 @@ export default function Discover(props) {
         return (
           <Container className={classes.cardGrid} maxWidth="md">
 
-            <div className="float-right">{renderRegionSelect()}</div>
-
-            <h1 className="mb-3">Discover</h1>
+            <Grid container spacing={2} className="animated slideInDown">
+              <Grid item xs={6}>
+                <h1 className="mb-3">Discover</h1>
+              </Grid>
+              <Grid item xs={6}>
+                <div className="float-right">{renderRegionSelect()}</div>
+              </Grid>
+            </Grid>
 
             <Grid container spacing={4}>
               {list.filter(e=>e.type===TYPE).map((e,i)=>{
@@ -112,7 +118,7 @@ export default function Discover(props) {
                       }
 
                       return (
-                        <Grid item key={i} xs={12} sm={6} md={4}>
+                        <Grid item key={i} xs={12} sm={6} md={4} className={`animated flipInY`}>
                           <Card className={classes.card}>
                             {renderMedia(images)}
                             <CardContent className={classes.cardContent}>

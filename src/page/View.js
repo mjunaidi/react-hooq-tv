@@ -48,8 +48,8 @@ export default function View(props) {
           const {ageRating,releaseYear} = e
           return (
             <div className="mb-2">
-              <Chip label={releaseYear} className="mr-2 shadow" color="primary" />
-              <Chip label={ageRating} className="mr-2 shadow" color="secondary" />
+              <Chip label={releaseYear} className="mr-2 shadow animated bounceIn" color="primary" />
+              <Chip label={ageRating} className="mr-2 shadow animated bounceIn" color="secondary" />
             </div>
           )
         }
@@ -60,7 +60,11 @@ export default function View(props) {
           const e = images.find(e=>e.type==='BACKGROUND')
           if (typeof(e)==='object'&&e!==null) {
             const {url} = e
-            return <img src={url} alt={title} className="w-100 mb-3 rounded shadow" />
+            return (
+              <div className="mb-3 rounded shadow animated flipInY delay-1s">
+                <img src={url} alt={title} className="w-100" />
+              </div>
+            )
           }
         }
         return null
@@ -71,7 +75,11 @@ export default function View(props) {
           const e = images.find(e=>e.type==='SPOTLIGHT')
           if (typeof(e)==='object'&&e!==null) {
             const {url} = e
-            return <img src={url} alt={title} className="w-100 mb-3 rounded shadow" />
+            return (
+              <div className="mb-3 rounded shadow animated slideInUp delay-2s">
+                <img src={url} alt={title} className="w-100" />
+              </div>
+            )
           }
         }
         return null
@@ -79,7 +87,7 @@ export default function View(props) {
 
       return (
         <div className="container">
-          <div className="mb-3 mt-3">
+          <div className="mb-3 mt-3 animated slideInDown">
             <Link to="/"><ArrowBack className="mr-2" />Back</Link>
           </div>
 
@@ -87,24 +95,24 @@ export default function View(props) {
 
           {renderMeta(meta)}
 
-          <h1 className="mb-3">{title}</h1>
+          <h1 className="mb-3 animated lightSpeedIn">{title}</h1>
 
           <div className="mb-3">
-            <Chip avatar={<Movie className="m-1" />} variant="outlined"  label={as} className="mr-2 shadow" />
-            {running_time_friendly&&<Chip avatar={<AvTimer />} className="mr-2 shadow" label={running_time_friendly} variant="outlined" />}
+            <Chip avatar={<Movie className="m-1" />} variant="outlined"  label={as} className="mr-2 shadow animated bounceInUp" />
+            {running_time_friendly&&<Chip avatar={<AvTimer />} className="mr-2 shadow animated bounceInUp" label={running_time_friendly} variant="outlined" />}
           </div>
 
-          <div className="mb-3">
+          <div className="mb-3 animated fadeInUp slower">
             <Category className="mr-2" />
             {tags.map((e,i)=>{
               const {label} = e
               return (
-                <Chip key={i} label={label} variant="outlined" color="secondary" className="mr-2 shadow" />
+                <Chip key={i} label={label} variant="outlined" color="secondary" className={`mr-2 shadow`} />
               )
             })}
           </div>
 
-          {Array.isArray(languages)&&languages>0&&<div className="mb-3">
+          {Array.isArray(languages)&&languages>0&&<div className="mb-3 animated fadeInUp slower">
             <Language className="mr-2" />
             {
               languages.map((e,i)=>(
@@ -113,7 +121,7 @@ export default function View(props) {
             }
           </div>}
 
-          <p className="mb-3">{description}</p>
+          <p className="mb-3 animated fadeIn">{description}</p>
 
           {renderSpotlight(images)}
 

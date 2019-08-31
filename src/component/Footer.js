@@ -29,7 +29,7 @@ function Copyright() {
 export default function Footer(props) {
   const classes = useStyles()
   return (
-    <footer className={classes.footer}>
+    <footer className={`${classes.footer} animated fadeIn slowest`}>
       <p className="text-center text-sm text-muted">{Constant.disclaimer}</p>
       <Copyright />
     </footer>
