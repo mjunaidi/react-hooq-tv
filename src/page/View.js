@@ -50,7 +50,9 @@ export default function View(props) {
           if (typeof(e)==='object'&&e!==null) {
             const {url} = e
             return (
-              <div className="mb-3 rounded shadow animated flipInY delay-1s">
+              <div className="mb-3 rounded shadow animated flipInY delay-1s" style={{
+                marginLeft: -15, marginRight: -15,
+              }}>
                 <img src={url} alt={title} className="w-100" />
               </div>
             )
@@ -65,7 +67,9 @@ export default function View(props) {
           if (typeof(e)==='object'&&e!==null) {
             const {url} = e
             return (
-              <div className="mb-3 rounded shadow animated flipInY delay-2s">
+              <div className="mb-3 rounded shadow animated flipInY delay-2s" style={{
+                marginLeft: -15, marginRight: -15,
+              }}>
                 <img src={url} alt={title} className="w-100" />
               </div>
             )
@@ -77,7 +81,9 @@ export default function View(props) {
       return (
         <div className="container mb-5">
           <div className="mb-3 mt-3 animated slideInDown">
-            <Link to="/" className="text-dark"><ArrowBack className="mr-2" />Back</Link>
+            <Link to="/" className="text-dark">
+              <Chip label={<><ArrowBack className="mr-2" />Back</>} variant="outlined" />
+            </Link>
           </div>
 
           {renderBackground(images)}
