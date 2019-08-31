@@ -98,11 +98,13 @@ export default function Discover(props) {
                             const {url} = poster
                             if (typeof(url)==='string'&&url.length>0) {
                               return (
-                                <CardMedia
-                                  className={classes.cardMedia}
-                                  image={url}
-                                  title={title}
-                                />
+                                <Link to={`/view/${id}`}>
+                                  <CardMedia
+                                    className={classes.cardMedia}
+                                    image={url}
+                                    title={title}
+                                  />
+                                </Link>
                               )
                             }
                           }
