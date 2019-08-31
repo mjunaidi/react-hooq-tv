@@ -1,13 +1,13 @@
-# Thinker Tech
+# HOOQ TV
 
-## How is this being created?
+![](/hooqtv.png)
 
-    npx create-react-app react-hooq-tv
+## Note
 
-## Libraries
-
-    yarn add react-router-dom @material-ui/core @material-ui/icons bootstrap animate.css marked i18next i18next-browser-languagedetector react-i18next
+This app is not related to hooq tv. Only the data are read from hooq tv. The app is created for educational purpose.
 
 ## To run
 
-    yarn start
+    yarn && yarn start
+
+> Access http://localhost:3000
