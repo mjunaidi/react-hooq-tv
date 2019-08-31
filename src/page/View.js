@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom'
 import {CircularProgress,Chip} from '@material-ui/core'
 import {ArrowBack,Movie,AvTimer,CloudDownload,ViewStream,Category,Language} from '@material-ui/icons'
 import DataService from '../component/DataService'
+import Meta from '../component/Meta'
 
 export default function View(props) {
 
@@ -41,19 +42,7 @@ export default function View(props) {
 
   if (typeof(data)==='object'&&data!==null) {
     if (typeof(data.data)==='object'&&data.data!==null) {
-      const {title,description,as,languages,streamable,downloadable,running_time_friendly,images,tags,meta,} = data.data
-
-      const renderMeta = e=>{
-        if (typeof(e)==='object'&&e!==null) {
-          const {ageRating,releaseYear} = e
-          return (
-            <div className="mb-2">
-              <Chip label={releaseYear} className="mr-2 shadow animated bounceIn" color="primary" />
-              <Chip label={ageRating} className="mr-2 shadow animated bounceIn" color="secondary" />
-            </div>
-          )
-        }
-      }
+      const {title,description,as,languages,streamable,downloadable,running_time_friendly,images,tags,meta={}} = data.data
 
       const renderBackground = images=>{
         if (Array.isArray(images)&&images.length>0) {
@@ -93,7 +82,7 @@ export default function View(props) {
 
           {renderBackground(images)}
 
-          {renderMeta(meta)}
+          <div className="mb-3"><Meta {...meta} className="mb-2" /></div>
 
           <h1 className="mb-3 animated lightSpeedIn">{title}</h1>
 

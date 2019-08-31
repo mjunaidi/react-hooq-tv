@@ -1,8 +1,10 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
-import {Button,Card,CardActions,CardContent,CardMedia,Grid,Typography,Container,Select,MenuItem} from '@material-ui/core'
+import {Button,Chip,Card,CardActions,CardContent,CardMedia,Grid,Typography,Container,Select,MenuItem} from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
+import {AvTimer} from '@material-ui/icons'
 import DataService from '../component/DataService'
+import Meta from '../component/Meta'
 import Constant from '../Constant'
 
 const useStyles = makeStyles(theme => ({
@@ -95,7 +97,7 @@ export default function Discover(props) {
                   const {data} = e
                   if (Array.isArray(data)&&data.length>0) {
                     return data.map((e,i)=>{
-                      const {id,title,images} = e
+                      const {id,title,images,meta={},running_time_friendly} = e
 
                       const renderMedia = images=>{
                         if (Array.isArray(images)&&images.length>0) {
@@ -122,9 +124,9 @@ export default function Discover(props) {
                           <Card className={classes.card}>
                             {renderMedia(images)}
                             <CardContent className={classes.cardContent}>
-                              <Typography gutterBottom variant="h5" component="h2">
-                                {title}
-                              </Typography>
+                              <Typography gutterBottom variant="h5" component="h2">{title}</Typography>
+                              <Meta {...meta} className="mb-2" />
+                              {running_time_friendly&&<Chip avatar={<AvTimer />} className="mr-2 shadow animated bounceInUp" label={running_time_friendly} variant="outlined" />}
                             </CardContent>
                             <CardActions>
                               <Link to={`/view/${id}`}>
