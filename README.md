@@ -1,7 +1,5 @@
 # HOOQ TV
 
-[Live Demo](https://www.trendify.me)
-
 ## To run
 
     yarn && yarn start
